@@ -9,7 +9,6 @@ jobs:
   deploy:
     runs-on: ubuntu-letest
     steps:
-    - name: checkout 
     - uses: actions/checkout@v1
 
     - name: configure AWS credentials

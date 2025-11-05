@@ -9,8 +9,9 @@ jobs:
   deploy:
     runs-on: ubuntu-20
     steps:
-    - uses: kaifjunaid/checkout@main
-    - uses: kaifjunaid/s3-sync-action@main
+    - uses: kaifjunaid/checkout@<commit-SHA>
+    - uses: kaifjunaid/s3-sync-action@<commit-SHA>
+
       with:
         args: --acl public-read --follow-symlinks --delete
       env:

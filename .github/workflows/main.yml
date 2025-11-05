@@ -9,8 +9,8 @@ jobs:
   deploy:
     runs-on: ubuntu-20
     steps:
-    - uses: actions/checkout@<commit-SHA>
-    - uses: pramote.finecart/s3-sync-action@<commit-SHA>
+    - uses: kaifjunaid/checkout@main
+    - uses: kaifjunaid/s3-sync-action@main
       with:
         args: --acl public-read --follow-symlinks --delete
       env:

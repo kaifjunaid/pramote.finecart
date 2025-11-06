@@ -9,11 +9,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@main
+    - uses: actions/checkout@v3
 
-    - uses: jakejarvis/s3-sync-actions@main
+    - uses: jakejarvis/s3-sync-actions@v0.5.1
       with:
-        args: --acl public-read-follow-symlinks --delete
+        args: --acl public-read --delete
       env:  
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

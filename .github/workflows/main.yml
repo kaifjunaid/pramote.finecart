@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20 version   
+    runs-on: self hosted runner   
     steps:
     - uses: actions/checkout@v3
 

@@ -24,7 +24,7 @@ jobs:
 
       - name: Sync files to S3
         run: |
-          aws s3 sync public/ s3://tws0github-promo-demo-project/ --acl public-read --delete
+          aws s3 sync public/ s3://tws0githubt/ --acl public-read --delete
 
 
 

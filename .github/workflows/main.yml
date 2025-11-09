@@ -15,5 +15,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-north-1
       - name: Deploy static site to S3 bucket
-        run: |
-         powershell -Command "aws s3 sync public/ s3://tws0github-promo-demo-project/ --acl public-read --delete"
+        run: aws s3 sync public/ s3://tws0github-promo-demo-project/ --acl public-read --delete

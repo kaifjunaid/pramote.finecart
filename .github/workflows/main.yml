@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-letest
     steps:
     - uses: actions/checkout@main
     - uses: jakejarvis/s3-sync-action@main

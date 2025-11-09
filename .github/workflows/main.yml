@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self hosted runner   
+    runs-on: DESKTOP-R4KB2K7
     steps:
     - uses: actions/checkout@v3
 

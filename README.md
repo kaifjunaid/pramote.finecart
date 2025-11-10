@@ -8,4 +8,4 @@ Here's an alternative version:
 
 "Fresh Delivered to Your Door! Order Groceries, Fruits, Chocolates, Ice-Creams & More with Finecart. Download Now & Get Exciting Offers!"
 
-Feel free to pick the one that suits your needs!  
+Feel free to pick the one that suits your needs!   

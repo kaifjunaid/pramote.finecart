@@ -21,4 +21,5 @@ jobs:
 
       - name: Deploy to S3
         run: |
-          & 'C:\Program Files\Amazon\AWSCLIV2\aws.exe' s3 sync public/ s3://tws0githubt/ --acl public-read --delete
+          & 'C:\Program Files\Amazon\AWSCLIV2\aws.exe' s3 sync public/ s3://tws0githubt/ --delete
+          & 'C:\Program Files\Amazon\AWSCLIV2\aws.exe' s3api put-bucket-acl --bucket tws0githubt --acl public-read

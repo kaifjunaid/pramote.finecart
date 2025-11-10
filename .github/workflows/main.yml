@@ -1,3 +1,4 @@
+
 name: Deploy to AWS S3
 
 on:
@@ -15,11 +16,15 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
+          aws_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }} 
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-north-1
 
+      - name: Create S3 bucket
+        run: |
+          & 'C:\Program Files\Amazon\AWSCLIV2\aws.exe' s3 mb s3://tws0githubt
+
       - name: Deploy to S3
         run: |
-          & 'C:\Program Files\Amazon\AWSCLIV2\aws.exe' s3 sync public/ s3://tws0githubt/ --delete
-          & 'C:\Program Files\Amazon\AWSCLIV2\aws.exe' s3api put-bucket-acl --bucket tws0githubt --acl public-read
+          & 'C:\Program Files\Amazon\AWSCLIV2\aws.exe' s3 sync ./public/ s3://tws0githubt/ --delete --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers

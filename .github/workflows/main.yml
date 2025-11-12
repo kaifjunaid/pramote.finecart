@@ -3,24 +3,20 @@ name: Upload Website
 on:
   push:
     branches:
-      - main
+    - main
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: self-hosted 
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Build site
-        run: |
-          npm install 
-          npm run build  # outputs to ./public
-
-      - uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-north-1
-
-      - name: Deploy static site to S3
-        run: aws s3 sync ./public s3://promo-demo-project --acl public-read --delete
+    - uses: actions/checkout@main
+    - uses: aws-actions/configure-aws-credentials@v4 
+      with:
+        args: --acl public-read --follow- promo-demo-project--delete 
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }} 
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: 'eu-north-1'  
+        SOURCE_DIR: 'public'      
+        run: aws s3 sync . s3://tws0github-promo-demo-project--delete 

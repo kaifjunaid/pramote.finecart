@@ -1,25 +1,26 @@
-name: Build and Deploy to S3
+name: Deploy to S3
 
 on:
   push:
     branches:
-      - main   
+      - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: self-hosted
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: Configure AWS
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }} 
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-north-1 
-          SOURCE_DIR: 'public' 
-          run: aws s3 sync . s3://promo-demo-project--delete 
-      
+          aws-region: eu-north-1
+
+      - name: Build and deploy
+        run: |
+          npm install
+          npm run build
+          aws s3 sync ./build/ s3://my-website/ --delete --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers

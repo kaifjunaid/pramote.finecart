@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy: 
+  deploy:
     runs-on: self-hosted
 
     steps:
@@ -22,4 +22,8 @@ jobs:
 
       - name: Upload to S3
         run: |
-          aws s3 sync . s3:// promo-demo-project --exclude ".github/*" --delete --acl public-read
+          aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET }} \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --delete \
+            --acl public-read

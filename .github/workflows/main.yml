@@ -8,6 +8,9 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
+    defaults:
+      run:
+        working-directory: .
     steps:
       - uses: actions/checkout@v3
 
@@ -22,14 +25,6 @@ jobs:
         run: |
           dir
 
-      - name: Change into repository directory
-        run: |
-          cd pramote.finecart
-
-      - name: List files
-        run: |
-          dir
-
       - name: Build
         run: |
           npm install
@@ -37,4 +32,4 @@ jobs:
 
       - name: Deploy to S3
         run: |
-          aws s3 sync ./build s3://${{ secrets.AWS_S3_BUCKET }} --delete --acl public-read
+          aws s3 sync ./build s3://${{ secrets.AWS_S3_BUCKET }} --delete --acl public-read

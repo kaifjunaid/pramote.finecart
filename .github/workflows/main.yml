@@ -22,6 +22,14 @@ jobs:
         run: |
           dir
 
+      - name: Change into repository directory
+        run: |
+          cd pramote.finecart
+
+      - name: List files
+        run: |
+          dir
+
       - name: Build
         run: |
           npm install
